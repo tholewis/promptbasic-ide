@@ -1,6 +1,6 @@
 # PromptBasic IDE
 
-A Visual Basic 3-style IDE where **natural language prompts replace code** in event handlers.
+A Visual Basic 3-style IDE where natural language prompts replace code in event handlers.
 
 Powered by the Anthropic Claude API.
 
