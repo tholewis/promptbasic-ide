@@ -14,6 +14,14 @@ Powered by the Anthropic Claude API for intelligent prompt interpretation.
 - **Web-Based**: Runs entirely in the browser with a Node.js backend proxy
 - **Modern Tech Stack**: Built with React, Vite, and Express
 
+## Screenshots
+
+### Main Interface
+<img src="./PromptBasic Screenshot 01.png" width="600" alt="PromptBasic IDE Main Interface">
+
+### Example Usage
+<img src="./PromptBasic Screenshot 02.png" width="600" alt="PromptBasic IDE Example Usage">
+
 ## Prerequisites
 
 - Node.js (v16 or higher)
