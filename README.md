@@ -6,6 +6,8 @@ A modern, web-based IDE inspired by Visual Basic 3, where natural language promp
 
 Powered by the Anthropic Claude API for intelligent prompt interpretation.
 
+📚 **[Full Documentation](docs/)** - Tutorials, API reference, troubleshooting, and more
+
 ## Features
 
 - **Drag-and-Drop UI Design**: Visual form designer with toolbox controls
