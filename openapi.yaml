@@ -1,0 +1,268 @@
+openapi: 3.0.0
+info:
+  title: PromptBasic IDE API
+  description: REST API for PromptBasic IDE - processes natural language prompts and generates JavaScript code
+  version: 1.0.0
+  contact:
+    name: PromptBasic IDE
+    url: https://github.com/tholewis/promptbasic-ide
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:3001/api
+    description: Local development server
+  - url: https://promptbasic-ide.example.com/api
+    description: Production server (example)
+
+tags:
+  - name: Messages
+    description: Natural language prompt processing
+  - name: Health
+    description: Server health and status
+
+paths:
+  /messages:
+    post:
+      tags:
+        - Messages
+      summary: Process natural language prompt and generate code
+      description: Receives natural language descriptions of UI interactions and generates executable JavaScript code using Anthropic Claude AI
+      operationId: generateCode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - messages
+              properties:
+                messages:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Message'
+                  description: Array of message objects containing the user prompt and conversation history
+                  example:
+                    - role: user
+                      content: "When the button is clicked, show a message saying 'Hello World'"
+                system:
+                  type: string
+                  description: System prompt to guide AI behavior
+                  example: "You are a JavaScript code generator. Generate clean, executable JavaScript."
+                  default: "Generate JavaScript code for UI interactions"
+                max_tokens:
+                  type: integer
+                  description: Maximum tokens in AI response
+                  default: 1000
+                  minimum: 100
+                  maximum: 4000
+                temperature:
+                  type: number
+                  description: AI creativity level (0.0-1.0, where 0 is deterministic and 1 is creative)
+                  default: 0.7
+                  minimum: 0.0
+                  maximum: 1.0
+      responses:
+        '200':
+          description: Successful code generation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIResponse'
+              example:
+                id: msg_1234567890
+                type: message
+                role: assistant
+                content:
+                  - type: text
+                    text: "document.getElementById('button').addEventListener('click', function() {\n  alert('Hello World');\n});"
+                model: claude-3-5-sonnet-20241022
+                usage:
+                  input_tokens: 45
+                  output_tokens: 23
+        '400':
+          description: Bad request - invalid parameters or missing required fields
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  type: invalid_request_error
+                  message: "missing required field: messages"
+        '401':
+          description: Unauthorized - missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  type: authentication_error
+                  message: "ANTHROPIC_API_KEY is required"
+        '429':
+          description: Too many requests - rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  type: rate_limit_error
+                  message: "Rate limit exceeded. Please retry after 60 seconds."
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /health:
+    get:
+      tags:
+        - Health
+      summary: Health check endpoint
+      description: Check if the server and its dependencies are operational
+      operationId: healthCheck
+      responses:
+        '200':
+          description: Server is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+              example:
+                status: healthy
+                timestamp: "2024-01-15T10:30:00Z"
+                version: "1.0.0"
+                uptime: 3600
+        '500':
+          description: Server is unhealthy or experiencing issues
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: unhealthy
+                  error:
+                    type: string
+                    example: "Anthropic API unavailable"
+
+components:
+  schemas:
+    Message:
+      type: object
+      required:
+        - role
+        - content
+      properties:
+        role:
+          type: string
+          enum: [user, assistant]
+          description: Role of the message sender
+        content:
+          type: string
+          description: Content of the message
+
+    AIResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique message identifier
+        type:
+          type: string
+          enum: [message]
+        role:
+          type: string
+          enum: [assistant]
+        content:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum: [text]
+              text:
+                type: string
+                description: Generated JavaScript code or response text
+        model:
+          type: string
+          description: AI model used
+          example: claude-3-5-sonnet-20241022
+        stop_reason:
+          type: string
+          description: Reason the model stopped generating
+          enum: [end_turn, max_tokens, stop_sequence]
+        stop_sequence:
+          type: string
+          nullable: true
+        usage:
+          $ref: '#/components/schemas/TokenUsage'
+
+    TokenUsage:
+      type: object
+      properties:
+        input_tokens:
+          type: integer
+          description: Number of tokens in the input
+        output_tokens:
+          type: integer
+          description: Number of tokens in the output
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            type:
+              type: string
+              description: Error type category
+              enum:
+                - invalid_request_error
+                - authentication_error
+                - authorization_error
+                - rate_limit_error
+                - timeout_error
+                - server_error
+            message:
+              type: string
+              description: Human-readable error message
+
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [healthy, unhealthy]
+          description: Overall health status
+        timestamp:
+          type: string
+          format: date-time
+          description: Server timestamp in ISO 8601 format
+        version:
+          type: string
+          description: API version
+        uptime:
+          type: integer
+          description: Server uptime in seconds
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Anthropic API key passed via ANTHROPIC_API_KEY environment variable on server side
+
+security:
+  - ApiKeyAuth: []
+
+externalDocs:
+  description: Full documentation
+  url: https://github.com/tholewis/promptbasic-ide/blob/main/docs/api.md

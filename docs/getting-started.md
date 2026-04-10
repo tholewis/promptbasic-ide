@@ -1,3 +1,15 @@
+---
+title: Getting Started
+description: Installation, setup instructions, and first run guide for PromptBasic IDE
+category: Setup
+version: 1.0.0
+last_updated: 2026-04-10
+autor: Getting Started
+audience: developer, beginner
+prerequisites: [Node.js 16+, npm, Git, Anthropic API key]
+tags: [installation, setup, prerequisites, environment-variables]
+---
+
 # Getting Started
 
 This guide will help you set up PromptBasic IDE on your local machine and get started with development.

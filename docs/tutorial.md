@@ -1,3 +1,15 @@
+---
+title: Tutorial - Building Your First Application
+description: Step-by-step guide to building a personal information form application with validation and dynamic displays
+category: Learning
+version: 1.0.0
+last_updated: 2026-04-10
+audience: beginner, learner
+time_estimate: 30-45 minutes
+prerequisites: [PromptBasic IDE running, basic UI concepts]
+tags: [tutorial, hands-on, practical, forms, validation, events]
+---
+
 # Tutorial: Building Your First PromptBasic Application
 
 This comprehensive tutorial will guide you through creating a simple but complete application using PromptBasic IDE. We'll build a "Personal Information Form" that collects user data and displays it dynamically.

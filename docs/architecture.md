@@ -1,3 +1,14 @@
+---
+title: Architecture
+description: Technical system design, component hierarchy, backend structure, AI integration, security, performance, and deployment architecture
+category: Technical Reference
+version: 1.0.0
+last_updated: 2026-04-10
+autor: Architecture
+audience: developer, architect, contributor
+tags: [architecture, frontend, backend, ai-integration, security, performance, deployment]
+---
+
 # Architecture
 
 This document provides a detailed technical overview of PromptBasic IDE's architecture, design decisions, and implementation details.

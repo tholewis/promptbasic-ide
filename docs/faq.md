@@ -1,3 +1,15 @@
+---
+title: Frequently Asked Questions
+description: Comprehensive FAQ covering general questions, technical details, setup, usage, AI code generation, costs, development, and legal considerations
+category: Support
+version: 1.0.0
+last_updated: 2026-04-10
+autor: FAQ
+audience: all
+common_questions: [setup, costs, capabilities, browser-support, security]
+tags: [faq, q-and-a, support, general-questions, technical-details]
+---
+
 # Frequently Asked Questions
 
 This FAQ covers common questions about PromptBasic IDE. For detailed guides, see the [Tutorial](tutorial.md) and [Getting Started](getting-started.md).

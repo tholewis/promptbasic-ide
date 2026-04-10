@@ -1,3 +1,15 @@
+---
+title: Troubleshooting
+description: Comprehensive guide to diagnosing and resolving common issues with setup, API, runtime, performance, development, and build
+category: Support
+version: 1.0.0
+last_updated: 2026-04-10
+autor: Troubleshooting
+audience: all
+related_pages: [faq.md, getting-started.md]
+tags: [troubleshooting, support, error-resolution, debugging, performance-issues]
+---
+
 # Troubleshooting
 
 This guide helps you resolve common issues with PromptBasic IDE. If you can't find a solution here, check the [FAQ](faq.md) or create an issue on GitHub.

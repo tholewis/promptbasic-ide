@@ -1,0 +1,188 @@
+{
+  "project": {
+    "name": "PromptBasic IDE",
+    "description": "A visual programming IDE where natural language prompts replace code in event handlers",
+    "version": "1.0.0",
+    "license": "MIT",
+    "repository": "https://github.com/tholewis/promptbasic-ide",
+    "homepage": "https://github.com/tholewis/promptbasic-ide"
+  },
+  "technologies": {
+    "frontend": {
+      "framework": "React",
+      "version": "18.x",
+      "buildTool": "Vite"
+    },
+    "backend": {
+      "runtime": "Node.js",
+      "minimumVersion": "16",
+      "framework": "Express"
+    },
+    "ai": {
+      "provider": "Anthropic",
+      "model": "Claude 3.5 Sonnet",
+      "apiVersion": "latest"
+    }
+  },
+  "requirements": {
+    "system": {
+      "nodejs": "16+",
+      "npm": "8+",
+      "git": "2.x+"
+    },
+    "external": {
+      "anthropicApiKey": {
+        "required": true,
+        "obtainFrom": "https://console.anthropic.com/",
+        "format": "sk-ant-*",
+        "costModel": "Pay-as-you-go"
+      }
+    }
+  },
+  "supportedBrowsers": [
+    {
+      "name": "Chrome",
+      "minimumVersion": "90"
+    },
+    {
+      "name": "Firefox",
+      "minimumVersion": "88"
+    },
+    {
+      "name": "Safari",
+      "minimumVersion": "14"
+    },
+    {
+      "name": "Edge",
+      "minimumVersion": "90"
+    }
+  ],
+  "ports": {
+    "frontend": 3000,
+    "backend": 3001
+  },
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/api/messages",
+      "description": "Process natural language prompts and generate code",
+      "authentication": "ANTHROPIC_API_KEY"
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "description": "Check server health status",
+      "authentication": "none"
+    }
+  ],
+  "features": {
+    "coreCapabilities": [
+      "Drag-and-drop UI design",
+      "Natural language event programming",
+      "Real-time code generation",
+      "Web-based development"
+    ],
+    "supportedControls": [
+      "Button",
+      "TextBox",
+      "Label",
+      "CheckBox",
+      "RadioButton",
+      "ComboBox",
+      "ListBox",
+      "PictureBox",
+      "Timer"
+    ],
+    "eventTypes": [
+      "Click",
+      "Change",
+      "Load",
+      "Unload",
+      "Focus",
+      "Blur",
+      "KeyDown",
+      "KeyUp"
+    ]
+  },
+  "documentation": {
+    "index": "docs/README.md",
+    "pages": [
+      {
+        "file": "overview.md",
+        "title": "Overview",
+        "category": "Getting Started",
+        "audience": ["beginner", "decision-maker"]
+      },
+      {
+        "file": "getting-started.md",
+        "title": "Getting Started",
+        "category": "Setup",
+        "audience": ["developer", "beginner"]
+      },
+      {
+        "file": "tutorial.md",
+        "title": "Tutorial",
+        "category": "Learning",
+        "audience": ["beginner", "learner"],
+        "timeEstimate": "30-45 minutes"
+      },
+      {
+        "file": "architecture.md",
+        "title": "Architecture",
+        "category": "Technical Reference",
+        "audience": ["developer", "architect"]
+      },
+      {
+        "file": "api.md",
+        "title": "API Reference",
+        "category": "Technical Reference",
+        "audience": ["backend-developer"]
+      },
+      {
+        "file": "troubleshooting.md",
+        "title": "Troubleshooting",
+        "category": "Support",
+        "audience": ["all"]
+      },
+      {
+        "file": "faq.md",
+        "title": "FAQ",
+        "category": "Support",
+        "audience": ["all"]
+      },
+      {
+        "file": "contributing.md",
+        "title": "Contributing",
+        "category": "Community",
+        "audience": ["contributor"]
+      }
+    ]
+  },
+  "buildCommands": {
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "preview": "npm run preview",
+    "test": "npm test"
+  },
+  "limitations": {
+    "requiresInternet": true,
+    "reason": "Depends on Anthropic API for code generation",
+    "offlineSupport": "Planned for future versions"
+  },
+  "costs": {
+    "software": "Free (MIT)",
+    "apiUsage": "Anthropic Claude API - pay-per-use pricing"
+  },
+  "security": {
+    "apiKeyStorage": "Environment variables only",
+    "dataPrivacy": "No server-side data persistence",
+    "codeExecution": "Browser-based, client-side only"
+  },
+  "lastUpdated": "2026-04-10",
+  "maintainers": [
+    {
+      "name": "Thomas Lewis",
+      "github": "tholewis"
+    }
+  ]
+}

@@ -1,3 +1,13 @@
+---
+title: Overview
+description: Comprehensive explanation of PromptBasic IDE, its innovation, capabilities, and target audience
+category: Getting Started
+version: 1.0.0
+last_updated: 2026-04-10
+audience: beginner, decision-maker
+tags: [overview, innovation, capabilities, technology-stack]
+---
+
 # Overview
 
 ## What is PromptBasic IDE?

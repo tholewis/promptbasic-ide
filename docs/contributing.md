@@ -1,3 +1,15 @@
+---
+title: Contributing
+description: Guidelines for code contributions, non-code contributions, development workflow, coding standards, testing, and community expectations
+category: Community
+version: 1.0.0
+last_updated: 2026-04-10
+autor: Contributing
+audience: contributor, developer
+contribution_types: [code, documentation, bug-reports, feature-requests, testing]
+tags: [contributing, development, guidelines, standards, pull-requests, community]
+---
+
 # Contributing to PromptBasic IDE
 
 Thank you for your interest in contributing to PromptBasic IDE! This document provides guidelines and information for contributors.

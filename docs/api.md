@@ -1,3 +1,16 @@
+---
+title: API Reference
+description: Complete REST API documentation including endpoints, request/response formats, authentication, error codes, SDK examples, and best practices
+category: Technical Reference
+version: 1.0.0
+last_updated: 2026-04-10
+autor: API
+audience: backend-developer, integration-specialist
+base_url: http://localhost:3001/api
+endpoints: ["/api/messages", "/api/health"]
+tags: [api, rest, integration, sdk, authentication, error-handling]
+---
+
 # API Reference
 
 This document provides detailed information about PromptBasic IDE's backend API endpoints, request/response formats, and integration guidelines.
